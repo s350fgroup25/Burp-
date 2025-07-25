@@ -39,11 +39,11 @@ Reference :
  - 使用分隔符號差異，為快取伺服器（而非來源伺服器）檢視的路徑新增靜態副檔名
 
 1. 在目標終端節點的 URL 中新增任意字串 :
-   => /settings/users/list --> /settings/users/listaaa
-2. 添加一個可能的分隔符
-   =>/settings/users/list;aaa
-   => 如果回應與基本回應相同，則表示該;字元用作分隔符
-   => 如果它將對路徑的回應與任意字串匹配，則表示該; 字元不用作分隔符
+    - /settings/users/list --> /settings/users/listaaa
+3. 添加一個可能的分隔符
+    - /settings/users/list;aaa
+    -  如果回應與基本回應相同，則表示該;字元用作分隔符
+    -  如果它將對路徑的回應與任意字串匹配，則表示該; 字元不用作分隔符
 
 Lab : 
 
