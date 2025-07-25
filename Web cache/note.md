@@ -1,5 +1,5 @@
 **Web cache deception attacks**
-=> goal : 存在一個快取規則來儲存以.js結尾的請求的回應
+- goal : 存在一個快取規則來儲存以.js結尾的請求的回應
 - 靜態目錄規則: /static/ or /assets/
 - 檔案名稱規則: robots.txt or favicon.ico
 - 專注於支援GET、HEAD或OPTIONS方法的端點
