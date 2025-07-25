@@ -1,4 +1,4 @@
-Web cache deception attacks
+**Web cache deception attacks**
 - 靜態目錄規則: /static/ or /assets/
 - 檔案名稱規則: robots.txt or favicon.ico
 - 專注於支援GET、HEAD或OPTIONS方法的端點
@@ -9,6 +9,7 @@ Web cache deception attacks
 	- Burp 現在會為您發出的每個請求添加唯一的查詢字串。
 	- 您可以在「Logger 」標籤中查看新增的查詢字串
 	- Cache-Control header
+   
 Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/
 Request:
 - change /my-account/ to /my-account/abc.js
@@ -17,9 +18,12 @@ Request:
 Response:
 - X-Cache chnage to hit -- > X-Cache: hit
 
+=> Create 惡意 website (html)
+- <script>document.location="https://YOUR-LAB-ID.web-security-academy.net/my-account/wcd.js"</script>
+- After others login , we can access this website , get /my-account/wcd.js to get key
+
 /* 
 X-Cache: miss : 此回應不是從快取提供
 X-Cache: hit : 該請求來自快取
 Cache-Control: max-age=30 : 如果回應已被緩存，則應將其儲存 30 秒
-
 */
