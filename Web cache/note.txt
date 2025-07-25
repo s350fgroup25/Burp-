@@ -1,0 +1,16 @@
+Web cache deception attacks
+- 靜態目錄規則: /static/ or /assets/
+- 檔案名稱規則: robots.txt or favicon.ico
+- 專注於支援GET、HEAD或OPTIONS方法的端點
+- 建構一個惡意 URL
+- cache buster
+	- Burp extension : Param miner > Settings > Add dynamic cachebuster
+	- 向路徑添加查詢字串並在每次發送請求時進行更改來更改鍵
+	- Burp 現在會為您發出的每個請求添加唯一的查詢字串。
+	- 您可以在「Logger 」標籤中查看新增的查詢字串
+	- Cache-Control header
+Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/
+change to /my-account/abc.js
+- /my-account/abc.js
+- X-Cache: miss
+- Cache-Control: max-age=30
