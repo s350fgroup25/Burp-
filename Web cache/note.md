@@ -1,5 +1,5 @@
 # Web cache deception attacks
-- goal : 存在一個快取規則來儲存以.js結尾的請求的回應
+- Goal : 存在一個快取規則來儲存以.js結尾的請求的回應
 - 靜態目錄規則: /static/ or /assets/
 - 檔案名稱規則: robots.txt or favicon.ico
 - 專注於支援GET、HEAD或OPTIONS方法的端點
@@ -50,14 +50,17 @@ Reference :
 Lab : https://0ab0001f040cfc2be566501900290032.web-security-academy.net/  <br>
   (Burp Intrude) 
   - GET /my-account&&abc HTTP/2
-  - GET /my-account;abc.js HTTP/2
+  - GET /my-account;abc.js HTTP/2 <br>
+  
+Reference : 
+- Careful decoding discrepancies
+- URL decode error 
+- static directory cache
+  - /static、/assets、/scripts、/images
 
-
-
-
-
-
-
+**Normalization discrepancies**
+- 建立路徑遍歷攻擊載荷
+- /static/..%2fprofile
 
 
 
