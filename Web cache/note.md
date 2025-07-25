@@ -13,7 +13,7 @@
  
 ## Exploiting path mapping
  Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/ <br>
- Burp Repeater  <br>
+  (Burp Repeater)<br>
 Request:
 - change /my-account/ to /my-account/abc.js
 - add X-Cache: miss 
@@ -23,7 +23,7 @@ Response:
 
 Create 惡意 website (html)
 - <script>document.location="https://YOUR-LAB-ID.web-security-academy.net/my-account/wcd.js"</script>
-- After others login , we can access this website , get /my-account/wcd.js to get key
+- After others login , we can access this website , get /my-account/wcd.js to get key  <br>
 
 Reference : 
 - X-Cache: miss : 此回應不是從快取提供
@@ -37,7 +37,7 @@ Reference :
 - 分隔符號 OpenLiteSpeed  [%00]
 	- 編碼字元 [%00]
 	- 如果快取使用 Akamai 或 Fastly，它會將%00和之後的所有內容解釋為路徑
- - 使用分隔符號差異，為快取伺服器（而非來源伺服器）檢視的路徑新增靜態副檔名\
+ - 使用分隔符號差異，為快取伺服器（而非來源伺服器）檢視的路徑新增靜態副檔名  <br>
 
 1. 在目標終端節點的 URL 中新增任意字串 :
     - /settings/users/list --> /settings/users/listaaa
@@ -46,8 +46,8 @@ Reference :
     -  如果回應與基本回應相同，則表示該;字元用作分隔符
     -  如果它將對路徑的回應與任意字串匹配，則表示該; 字元不用作分隔符
 
-Lab : https://0ab0001f040cfc2be566501900290032.web-security-academy.net/\
-Burp Intrude\
+Lab : https://0ab0001f040cfc2be566501900290032.web-security-academy.net/  <br>
+  (Burp Intrude)
 
 
 
