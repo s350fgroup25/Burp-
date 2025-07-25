@@ -31,6 +31,7 @@ Reference :
 - Cache-Control: max-age=30 : 如果回應已被緩存，則應將其儲存 30 秒
 
 ## Exploiting delimiter discrepancies
+- 保留字元 「./\=<>?+&*;:"{}|^`#」
 - 分隔符號 URL  [?]
 - 分隔符號 Java Spring [;]
 - 分隔符號 Ruby on Rails [.]
@@ -47,7 +48,9 @@ Reference :
     -  如果它將對路徑的回應與任意字串匹配，則表示該; 字元不用作分隔符
 
 Lab : https://0ab0001f040cfc2be566501900290032.web-security-academy.net/  <br>
-  (Burp Intrude)
+  (Burp Intrude) 
+  - GET /my-account&&abc HTTP/2
+  - GET /my-account;abc.js HTTP/2
 
 
 
