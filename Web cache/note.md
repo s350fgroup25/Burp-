@@ -9,7 +9,8 @@
 	- Burp 現在會為您發出的每個請求添加唯一的查詢字串。
 	- 您可以在「Logger 」標籤中查看新增的查詢字串
 	- Cache-Control header
-   
+ 
+ ** Exploiting path mapping for web cache deception  **
 Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/
 Request:
 - change /my-account/ to /my-account/abc.js
