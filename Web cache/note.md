@@ -23,7 +23,7 @@ Response:
 - After others login , we can access this website , get /my-account/wcd.js to get key
 
 /* 
-X-Cache: miss : 此回應不是從快取提供
-X-Cache: hit : 該請求來自快取
-Cache-Control: max-age=30 : 如果回應已被緩存，則應將其儲存 30 秒
+- X-Cache: miss : 此回應不是從快取提供
+- X-Cache: hit : 該請求來自快取
+- Cache-Control: max-age=30 : 如果回應已被緩存，則應將其儲存 30 秒
 */
