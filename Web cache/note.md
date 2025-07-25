@@ -10,7 +10,16 @@ Web cache deception attacks
 	- 您可以在「Logger 」標籤中查看新增的查詢字串
 	- Cache-Control header
 Lab : https://0a86005804fbe54880ed3f7400d6000d.web-security-academy.net/
-change to /my-account/abc.js
-- /my-account/abc.js
-- X-Cache: miss
-- Cache-Control: max-age=30
+Request:
+- change /my-account/ to /my-account/abc.js
+- add X-Cache: miss 
+- add Cache-Control: max-age=30 
+Response:
+- X-Cache chnage to hit -- > X-Cache: hit
+
+/* 
+X-Cache: miss : 此回應不是從快取提供
+X-Cache: hit : 該請求來自快取
+Cache-Control: max-age=30 : 如果回應已被緩存，則應將其儲存 30 秒
+
+*/
