@@ -58,15 +58,32 @@ Reference :
 - static directory cache
   - /static、/assets、/scripts、/images
 
-**Normalization discrepancies**
+## Exploiting normalization by the origin server
 - 建立路徑遍歷攻擊載荷
 - /static/..%2fprofile
+- 測試來源伺服器如何規範化 URL 路徑
+	- POST : 修改/profile為/aaa/..%2fprofile
+   	- 傳回設定檔訊息 --> 被解釋為/profile
+   	- 傳回404 --> 解釋為/aaa/..%2fprofile
+- 例如/aaa/..%2fassets/js/stockCheck.js
+	- 如果回應不再被緩存 --> 存在基於/assets前綴的快取規則
+   	- 仍然被緩存 --> /assets/js/stockCheck.js
+- /assets/..%2fjs/stockCheck.js
+  	- 如果回應不再被緩存 --> 存在基於/assets前綴的快取規則
+  	- 仍然被緩存 --> /assets/..%2fjs/stockCheck.js
 
+- /assets/aaa
+  	- 如果回應仍然被緩存 --> 快取規則是基於/assets前綴的
 
+- /<static-directory-prefix>/..%2f<dynamic-path
+	- /assets/..%2fprofile
 
-
-
-
+- /resources/..%2fYOUR-RESOURCE
+  	-  404回應 => X-Cache: miss
+  	-  ReSend => X-Cache: hit
+  	-  確認存在基於/resources前綴的靜態目錄快取規則
+     
+- https://YOUR-LAB-ID.web-security-academy.net/resources/..%2fmy-account?wcd
 
 
 
