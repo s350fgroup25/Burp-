@@ -25,11 +25,11 @@
   
 **Lab: Web shell upload via Content-Type restriction bypass**
 - change Content-Type : image/jpeg
-
+<br>
 **Lab: Web shell upload via path traversal**
 - Content-Disposition: form-data; name="avatar"; filename="../exploit.php"
 - filename="..%2fexploit.php"
-- GET /files/exploit.php <br>
+- GET /files/exploit.php
 
 ## 黑名單
 - 鮮為人知的替代檔案副檔名 e.g .php5 .shtml
