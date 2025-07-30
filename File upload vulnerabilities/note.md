@@ -39,5 +39,5 @@ PHP
 - Apache 伺服器 : (.htaccess)
 - IIS 伺服器 : (web.config)
     -<"staticContent>
-        <mimeMap fileExtension=".json" mimeType="application/json" />
+        <"mimeMap fileExtension=".json" mimeType="application/json" /">
         </staticContent">
