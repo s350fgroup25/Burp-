@@ -69,7 +69,11 @@ e.g ＜img src=p onerror='prompt(1)'> --> ＜img src⁼p onerror⁼＇prompt⁽1
 - echo $u
 - cat$u /etc%u/passwd$u
 
-## Tools 
+## Tools (Burp plugin)
 - Bypass WAF
     - https://portswigger.net/bappstore/ae2611da3bbc4687953a1f4ba6a4e04c
-- 
+- WAF Bypadd
+    - https://portswigger.net/bappstore/14c6fc737ce4468b807b80023d9740a8
+    - 透過使用虛擬資料填充 HTTP 請求來繞過 Web 應用程式防火牆 (WAF)
+- nowafpls
+    - https://github.com/assetnote/nowafpls
