@@ -38,6 +38,6 @@ PHP
         AddType application/x-httpd-php .php
 - Apache 伺服器 : (.htaccess)
 - IIS 伺服器 : (web.config)
-    -<pre> <staticContent>
+    -<"staticContent>
         <mimeMap fileExtension=".json" mimeType="application/json" />
-        </staticContent>
+        </staticContent">
