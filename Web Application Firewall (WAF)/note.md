@@ -17,7 +17,7 @@ https://medium.com/@allypetitt/5-ways-i-bypassed-your-web-application-firewall-w
 3. WhatWaf
 
 # Bypassing WAFs
-## Bypassing Regex
+## Bypassing Regex 繞過正規表示式
 - 更改有效載荷的大小寫 :
     - <sCrIpT>alert(XSS)</sCriPt> 
 - 使用各種編碼、替換函數或字元 :
