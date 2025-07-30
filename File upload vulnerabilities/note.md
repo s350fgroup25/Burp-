@@ -55,7 +55,8 @@
 - 加上分號 : exploit.asp;.jpg
 - 加上URL 編碼的空位元組字元 : exploit.asp%00.jpg
 - 使用多位元組 Unicode 字符 : xC0 x2E、xC4 xAE、xC0 xAE會轉換為x2E
-- 剝離 : exploit.p.phphp <br>
+- 剝離 : exploit.p.phphp
+
 **Lab: Web shell upload via obfuscated file extension**
 - filename="exploit.php%00.jpg"
 - exploit.php
