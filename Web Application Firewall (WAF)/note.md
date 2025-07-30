@@ -68,3 +68,8 @@ e.g ＜img src=p onerror='prompt(1)'> --> ＜img src⁼p onerror⁼＇prompt⁽1
 - Bash 將未初始化的變數視為空字串
 - echo $u
 - cat$u /etc%u/passwd$u
+
+## Tools 
+- Bypass WAF
+    - https://portswigger.net/bappstore/ae2611da3bbc4687953a1f4ba6a4e04c
+- 
