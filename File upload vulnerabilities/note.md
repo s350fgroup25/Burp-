@@ -40,7 +40,8 @@
 - IIS 伺服器 : (web.config)
     - <"staticContent>
         <"mimeMap fileExtension=".json" mimeType="application/json" /"><br>
-        </staticContent"> <br>
+        </staticContent">
+<br>
 **Lab: Web shell upload via extension blacklist bypass**
 - filename : .htaccess
 - Content-Type : text/plain
