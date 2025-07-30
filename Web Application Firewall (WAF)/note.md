@@ -47,7 +47,7 @@ $ python3  <br>
  >>>  urllib.parse.quote_plus(s.encode( "IBM037" )) <br>
  'L%A2%83%99%89%97%A3n%81%93%85%99%A3M%7F%A7%A2%A2%7F%5DLa%A2%83%99%89%97%A3n' <br>
 
-- 將編碼後的字串傳送到請求正文中並上傳到伺服器
+- 將編碼後的字串傳送到請求正文中並上傳到伺服器 <br>
 POST /comment/post HTTP/1.1 <br>
 Host: chatapp <br>
 Content-Type: application/x-www-form-urlencoded; charset=ibm500 <br>
