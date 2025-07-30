@@ -91,3 +91,6 @@
 - <"?php echo file_get_contents('/path/to/file'); ?">
 
 ## Prevent file upload vulnerabilities
+- 白名單
+- X （../）
+- 請勿將其上傳到伺服器的永久檔案系統 /temp
