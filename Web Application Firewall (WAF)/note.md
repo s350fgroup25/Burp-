@@ -77,3 +77,17 @@ e.g ＜img src=p onerror='prompt(1)'> --> ＜img src⁼p onerror⁼＇prompt⁽1
     - 透過使用虛擬資料填充 HTTP 請求來繞過 Web 應用程式防火牆 (WAF)
 - nowafpls
     - https://github.com/assetnote/nowafpls
+    - 透過使用虛擬資料填充 HTTP 請求來繞過 Web 應用程式防火牆 (WAF)
+
+## 已記錄的 WAF 限制
+- Cloudflare: 128 KB for ruleset engine, up to 500 MB for enterprise
+- AWS WAF	: 8 KB - 64 KB (configurable depending on service)
+- Akamai	: 8 KB - 128 KB
+- Azure WAF	: 128 KB
+- Fortiweb by Fortinet: 100 MB
+- Barracuda WAF: 64 KB
+- Sucuri: 10 MB
+- Radware AppWall	: up to 1 GB for cloud WAF
+- F5 BIG-IP WAAP: 20 MB (configurable)
+- Palo Alto: 10 MB
+- Cloud Armor by Google: 8 KB (can be increased to 128 KB)
