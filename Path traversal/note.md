@@ -1,8 +1,8 @@
 ## Path traversal (../)
 - 能夠讀取運行應用程式的伺服器上的任意檔案
 - 能夠寫入伺服器上的任意文件
-- 修改應用程式資料或行為 <br>
-**Example :**
+- 修改應用程式資料或行為
+- **Example :**
     - <"img src="/loadImage?filename=218.png""> --> call /var/www/images/218.png
     - https://insecure-website.com/loadImage?filename=../../../etc/passwd
     - ../和都是..\有效的目錄遍歷序列
